@@ -49,9 +49,9 @@ london_co = {
 
 
 key = input("Введите имя устройства: ")
-key1 = input("Введите имя параметра({}): ".format(','.join(sorted(london_co[key]))))
-print(sorted(london_co))
-print(sorted(london_co[key]))
+
+'''print(sorted(london_co))
+print(sorted(london_co[key]))'''
 '''while key not in sorted(london_co):
     key = input("Ошибка в имени устройства. Повторите попытку: ")
 else:
@@ -59,3 +59,15 @@ else:
         key1 = input("Ошибка в имени параметра. Повторите попытку: ")
     else:
         print(london_co[key][key1])'''
+while key not in sorted(london_co):
+    key = input("Ошибка в имени устройства. Повторите попытку: ")
+else:
+    print(london_co[key], "Done!")
+keys = london_co[key].keys()
+#print(','.join(sorted(keys)))
+key1 = input("Введите имя параметра({}): ".format(','.join(sorted(keys))))
+while key1 not in sorted(london_co[key]):
+    key1 = input("Ошибка в имени параметра. Повторите попытку: ")
+else:
+    print(london_co[key][key1])
+
