@@ -19,19 +19,17 @@ Mask:
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 '''
+ip = input("Введите IP в формате: 10.1.1.0/24: ")
+ip = ip.replace('.', ' ')
+ip = ip.replace('/',' ')
+ip = ip.split()
+print("-" * 30)
 
-interface = input('Enter interface type and number: ')
-vlan = input('Enter VLAN number: ')
 
-access_template = ['switchport mode access',
-                   'switchport access vlan {}',
-                   'switchport nonegotiate',
-                   'spanning-tree portfast',
-                   'spanning-tree bpduguard enable']
+print(f'''Network:\n{ip[0]:<8} {ip[1]:<8} {ip[2]:<8} {ip[3]:<8}''')
+print(f'''{int(ip[0]):08b} {int(ip[1]):08b} {int(ip[2]):08b} {int(ip[3]):08b}''')
 
-print('\n' + '-' * 30)
-print('interface {}'.format(interface))
-print('\n'.join(access_template).format(vlan))
-
-ip = input()
-print('Ввведите ip: {}.{}.{}.{}/{}'.format(ip, ip, ip, ip, ip))
+mask = [255, 255, 255 ,0]
+print(f'''Mask:\n/{ip[4]}''')
+print(f'''{mask[0]:<8} {mask[1]:<8} {mask[2]:<8} {mask[3]:<8}''')
+print(f'''{int(mask[0]):08b} {int(mask[1]):08b} {int(mask[2]):08b} {int(mask[3]):08b}''')
