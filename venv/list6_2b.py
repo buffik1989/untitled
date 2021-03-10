@@ -12,8 +12,15 @@
 
 ip = input("Введите адрес в формате 10.0.1.1: ")
 int_ip = []
+ip_list = []
+i = -1
 ip_correct = False
-while not ip_correct:
+while i < 4:
+    if i != -1:
+        ip = input("Введите пароль еще раз: ")
+        int_ip.clear()
+        ip_list.clear()
+    i = 0
     try:
         ip_list = ip.split('.')
         for indx in ip_list:
@@ -22,14 +29,16 @@ while not ip_correct:
         if len(int_ip) == 4:
             for n in int_ip:
                 if n in range(256):  #Проверка на 4 числа и диапазон до 255
-                    ip_correct = True
-                    continue
+                    i += 1
+                else:
+                    print("Ошибка в диапазоне")
+                    break
         else:
-            print('Неправильный IP-адрес')
+            print('Введите 4 числа')
     except ValueError:
-        print('Неправильный IP-адрес')
-    ip_list.clear()
-    ip = input("Введите пароль еще раз: ")
+        print('Используйте только цифры и символ "." ')
+    except IndexError:
+        print('Используйте только цифры и символ "." ')
 
 if int_ip[0] in range(1, 223):
     print('unicast')
